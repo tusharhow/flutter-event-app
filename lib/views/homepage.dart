@@ -26,11 +26,11 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 1.0,
-          title: const Text(
-            'Give your event a name',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 14,
+          title: TextFormField(
+            controller: _controller,
+            decoration: InputDecoration(
+              hintText: 'Search',
+              border: InputBorder.none,
             ),
           ),
           actions: [
@@ -80,52 +80,63 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         const SizedBox(height: kDefaultPadding / 2),
-                        Row(
-                          children: [
-                            DottedBorder(
-                              borderType: BorderType.RRect,
-                              radius: Radius.circular(12),
-                              color: Colors.black38,
-                              dashPattern: [5, 5],
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                child: Container(
-                                  height: 130,
-                                  width: 100,
-                                  color: Colors.black.withOpacity(0.03),
-                                  child: Center(
-                                    child: Container(
-                                      height: 33,
-                                      width: 35,
-                                      decoration: BoxDecoration(
-                                        color: Colors.black26,
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                        ),
-                                      ),
+                        SingleChildScrollView(
+                          child: Row(
+                            children: [
+                              DottedBorder(
+                                borderType: BorderType.RRect,
+                                radius: const Radius.circular(12),
+                                color: Colors.black38,
+                                dashPattern: [5, 5],
+                                child: ClipRRect(
+                                  borderRadius:
+                                      const BorderRadius.all(Radius.circular(10)),
+                                  child: Container(
+                                    height: 130,
+                                    width: 100,
+                                    child: Image.asset(
+                                      'assets/images/movie.png',
+                                      height: 100,
+                                      width: 100,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: kDefaultPadding),
-                            DottedBorder(
-                              borderType: BorderType.RRect,
-                              radius: Radius.circular(12),
-                              color: Colors.black38,
-                              dashPattern: [5, 5],
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                child: Container(
-                                  height: 130,
-                                  width: 100,
+                              const SizedBox(width: kDefaultPadding),
+                              DottedBorder(
+                                borderType: BorderType.RRect,
+                                radius: Radius.circular(12),
+                                color: Colors.black38,
+                                dashPattern: [5, 5],
+                                child: ClipRRect(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  child: Container(
+                                    height: 130,
+                                    width: 100,
+                                  ),
                                 ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: kDefaultPadding + 10),
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/icons/map.png',
+                              height: 25,
+                              width: 25,
+                              fit: BoxFit.cover,
+                              color: kPrimaryColor,
+                            ),
+                            const SizedBox(width: 5),
+                            Text(
+                              'Kloster, Alacati, Izmir/Turkey',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
@@ -171,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: kDefaultPadding * 12),
+            const SizedBox(height: kDefaultPadding * 9),
             MenuSelection(
                 locationClicked: locationClicked, dateClicked: dateClicked),
             const SizedBox(height: kDefaultPadding),
